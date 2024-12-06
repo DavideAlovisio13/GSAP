@@ -28,17 +28,17 @@ const squares = document.querySelectorAll(".square");
 gsap.to(squares, {
   duration: 3,
   opacity: 0,
-  y:200,
+  y: 200,
 });
 
-// stesso tween su classi diverse 
+// stesso tween su classi diverse
 gsap.to([".class1", ".class2", ".class3"], {
-    duration: 3,
-    // opacity: 0,
-    rotate: 180,
-    borderRadius: '50%',
-    y: 200
-})
+  duration: 3,
+  // opacity: 0,
+  rotate: 180,
+  borderRadius: "50%",
+  y: 200,
+});
 
 // metodo from e fromTo per gestire i tween
 
@@ -50,24 +50,28 @@ gsap.from(".square1", {
   // per lavorare con la proprietà opacity, meglio usare autoAlpha, che è la combinazione di visibilità e opacità. Per esempio con una modale
   autoAlpha: 0,
   x: -300,
-})
+});
 
 // il metodo fromTo serve per combinare stato iniziale e finale
 
 // in questo caso passiamo due oggetti, nel primo stato iniziale, nel secondo lo stato finale
 
-gsap.fromTo(".square2", {
-  autoAlpha: 0,
-  x: 300,
-  rotate: 180
-}, {
-  autoAlpha: 1,
-  x: 0,
-  rotate: 0,
-  duration: 4,
-    delay:1,
-    ease:"linear",
-})
+gsap.fromTo(
+  ".square2",
+  {
+    autoAlpha: 0,
+    x: 300,
+    rotate: 180,
+  },
+  {
+    autoAlpha: 1,
+    x: 0,
+    rotate: 0,
+    duration: 4,
+    delay: 1,
+    ease: "linear",
+  }
+);
 
 // timing functions, gestiamo la velocità di traslazione. Di default gsap utilizza un tipo di animazione che velocizza man mano l'animazione
 
@@ -81,12 +85,12 @@ document.querySelector(".start").addEventListener("click", () => {
   gsap.to(".time2", {
     x: 500,
     duration: 3,
-    ease:"power3.out"
+    ease: "power3.out",
   });
   gsap.to(".time3", {
     x: 500,
     duration: 3,
-    ease:"bounce"
+    ease: "bounce",
   });
 });
 
@@ -94,38 +98,86 @@ document.querySelector(".start").addEventListener("click", () => {
 
 // funzioni custom: possiamo creare funzioni personalizzate per gestire le animazioni. Per esempio(extra sulla documentazione, servono dei plug in per questo tipo di animazioni)
 
-// set e getProprety 
+// set e getProprety
 // primo parametro selettore, secondo di quale attributo vogliamo conoscere il valore, terzo per conversione(per esempio se vogliamo il valore in rem, px, ecc...)
 
 // metodo getProperty, lavora su unico elemento
 
-const data = gsap.getProperty("#square", 'data-number', '')
-console.log(data)
+const data = gsap.getProperty("#square", "data-number", "");
+console.log(data);
 
-const value = gsap.getProperty("#circle", 'opacity')
-console.log(value)
+const value = gsap.getProperty("#circle", "opacity");
+console.log(value);
 
-const className = gsap.getProperty("#square", 'class')
-console.log(className)
+const className = gsap.getProperty("#square", "class");
+console.log(className);
 
-// getter crea funzione, dove posso chiedere qualsiasi valore 
+// getter crea funzione, dove posso chiedere qualsiasi valore
 
-const getter = gsap.getProperty("#square")
-const x = getter('x')
-const top = getter('top')
-const id = getter('id')
-console.log(x, top, id)
+const getter = gsap.getProperty("#square");
+const x = getter("x");
+const top = getter("top");
+const id = getter("id");
+console.log(x, top, id);
 
 // metodo set, lavora su piu elementi
 
 gsap.set(["#circle", "#rec", "#square"], {
-    autoAlpha: 0,
-    x: -200
-})
+  autoAlpha: 0,
+  x: -200,
+});
 
 gsap.to(["#circle", "#rec", "#square"], {
+  autoAlpha: 1,
+  x: 0,
+  duration: 2,
+  ease: "elastic",
+});
+
+// stagger : permette di far partire le animazioni di una collection con un ritardo di tempo tra loro.
+
+gsap.set(".li-nav", {
+  autoAlpha: 0,
+  y: -200,
+});
+
+document.querySelector(".btn").addEventListener("click", () => {
+  gsap.to(".li-nav", {
     autoAlpha: 1,
-    x: 0,
+    y: 0,
     duration: 2,
     ease: "elastic",
-})
+    // inseriamo la proprietà stagger
+    // stagger: 0.1
+    // possiamo passare anche un oggetto con diverse proprietà
+    stagger: {
+      // indicare lo sfasamento
+      // each: 0.1,
+      // durata totale dell'animazione(calcolami tu lo sfasamento, considerando che la durata totale dell'animazione sia 2 secondi)
+      amount: 2,
+    },
+  });
+});
+
+document.querySelector(".dots-btn").addEventListener("click", () => {
+  gsap.to(".dots", {
+    y: 50,
+    duration: 1,
+    ease: "power3.out",
+    stagger: {
+      each: 0.1,
+      // indichiamo da dove vogliamo parta l'animazione
+      from: "center",
+    //   from: "random" parte in modo casuale
+    //   from: "edges" parte dai lati verso il centro
+    //   from:"2" parte dall'indice indicato
+    //  se citroviamo in una griglia specifichiamo le righe e colonne es. grid: [2,2], anche automaticamente es. grid: "auto", anche gli assi es. axis: "x" oppure "y"
+    // possiamo anche utilizzare ease es. 
+    // amount: 3,
+    // from: "random",
+    // grid: "auto",
+    // axis: "x",
+    // ease: "power3.in",
+    },
+  });
+});
