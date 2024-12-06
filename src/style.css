@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .container {
   display: flex;
   gap: 20px;
@@ -33,4 +38,16 @@
   width: 200px;
   height: 100px;
   background-color: yellow;
+}
+
+.square1 {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+}
+
+.square2 {
+  width: 100px;
+  height: 100px;
+  background-color: grey;
 }

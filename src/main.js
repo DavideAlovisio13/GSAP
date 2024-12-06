@@ -39,3 +39,32 @@ gsap.to([".class1", ".class2", ".class3"], {
     borderRadius: '50%',
     y: 200
 })
+
+// metodo from e fromTo per gestire i tween
+
+// from andiamo a gestire l'animazione nello stato iniziale
+
+gsap.from(".square1", {
+  duration: 3,
+  delay: 0.5,
+  // per lavorare con la proprietà opacity, meglio usare autoAlpha, che è la combinazione di visibilità e opacità. Per esempio con una modale
+  autoAlpha: 0,
+  x: -300,
+})
+
+// il metodo fromTo serve per combinare stato iniziale e finale
+
+// in questo caso passiamo due oggetti, nel primo stato iniziale, nel secondo lo stato finale
+
+gsap.fromTo(".square2", {
+  autoAlpha: 0,
+  x: 300,
+  rotate: 180
+}, {
+  autoAlpha: 1,
+  x: 0,
+  rotate: 0,
+  duration: 4,
+    delay:1,
+    ease:"linear",
+})
