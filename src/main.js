@@ -68,3 +68,28 @@ gsap.fromTo(".square2", {
     delay:1,
     ease:"linear",
 })
+
+// timing functions, gestiamo la velocità di traslazione. Di default gsap utilizza un tipo di animazione che velocizza man mano l'animazione
+
+document.querySelector(".start").addEventListener("click", () => {
+  gsap.to(".time1", {
+    x: 500,
+    duration: 3,
+    // timing function
+    ease: "none",
+  });
+  gsap.to(".time2", {
+    x: 500,
+    duration: 3,
+    ease:"power3.out"
+  });
+  gsap.to(".time3", {
+    x: 500,
+    duration: 3,
+    ease:"bounce"
+  });
+});
+
+// sezione easing su documentazione: in alcune animazioni hanno parametri in, out e inOut, questo determina se il rallentamento avviene all'inizio, alla fine o in entrambi i casi. Es. di solito con elemnti trasparenti da far apparire in pagina usiamo out, in al contrario. Con step dobbiamo inserire una stringa in base al numero di step.
+
+// funzioni custom: possiamo creare funzioni personalizzate per gestire le animazioni. Per esempio(extra sulla documentazione, servono dei plug in per questo tipo di animazioni)

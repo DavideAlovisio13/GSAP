@@ -15,6 +15,13 @@
   padding: 10px;
 }
 
+.container-flex-col {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .square {
   width: 100px;
   height: 100px;
@@ -50,4 +57,23 @@
   width: 100px;
   height: 100px;
   background-color: grey;
+}
+
+.time1 {
+  width: 100px;
+  height: 100px;
+  background-color: orangered;
+}
+
+.time2 {
+  width: 200px;
+  height: 100px;
+  background-color: orange;
+}
+
+.time3 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: yellowgreen;
 }
