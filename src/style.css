@@ -77,3 +77,27 @@
   border-radius: 50%;
   background-color: yellowgreen;
 }
+
+.setget1 {
+  width: 100px;
+  height: 100px;
+}
+
+.background-color-pink {
+  background-color: pink;
+}
+.setget2 {
+  width: 200px;
+  height: 100px;
+  background-color: purple;
+}
+.setget3 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: lightblue;
+}
+
+.opacity-0 {
+  opacity: 0;
+}

@@ -93,3 +93,39 @@ document.querySelector(".start").addEventListener("click", () => {
 // sezione easing su documentazione: in alcune animazioni hanno parametri in, out e inOut, questo determina se il rallentamento avviene all'inizio, alla fine o in entrambi i casi. Es. di solito con elemnti trasparenti da far apparire in pagina usiamo out, in al contrario. Con step dobbiamo inserire una stringa in base al numero di step.
 
 // funzioni custom: possiamo creare funzioni personalizzate per gestire le animazioni. Per esempio(extra sulla documentazione, servono dei plug in per questo tipo di animazioni)
+
+// set e getProprety 
+// primo parametro selettore, secondo di quale attributo vogliamo conoscere il valore, terzo per conversione(per esempio se vogliamo il valore in rem, px, ecc...)
+
+// metodo getProperty, lavora su unico elemento
+
+const data = gsap.getProperty("#square", 'data-number', '')
+console.log(data)
+
+const value = gsap.getProperty("#circle", 'opacity')
+console.log(value)
+
+const className = gsap.getProperty("#square", 'class')
+console.log(className)
+
+// getter crea funzione, dove posso chiedere qualsiasi valore 
+
+const getter = gsap.getProperty("#square")
+const x = getter('x')
+const top = getter('top')
+const id = getter('id')
+console.log(x, top, id)
+
+// metodo set, lavora su piu elementi
+
+gsap.set(["#circle", "#rec", "#square"], {
+    autoAlpha: 0,
+    x: -200
+})
+
+gsap.to(["#circle", "#rec", "#square"], {
+    autoAlpha: 1,
+    x: 0,
+    duration: 2,
+    ease: "elastic",
+})
